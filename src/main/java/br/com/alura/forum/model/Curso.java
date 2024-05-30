@@ -4,16 +4,21 @@ public class Curso {
 
 	private Long id;
 	private String nome;
-	private Subcategoria subcategoria;
+	private String subcategoria;
 
 	// construtor default exigido pela JPA
 	protected Curso() {
 	}
 
-	public Curso(String nome, Subcategoria subcategoria) {
+	public Curso(String nome, String subcategoria) {
 		this.nome = nome;
 		this.subcategoria = subcategoria;
 	}
+
+//	public Curso(String nome, Subcategoria subcategoria) {
+//		this.nome = nome;
+//		this.subcategoria = subcategoria;
+//	}
 
 	// getters
 	public Long getId() {
@@ -24,7 +29,7 @@ public class Curso {
 		return nome;
 	}
 
-	public Subcategoria getSubcategoria() {
+	public String getSubcategoria() {
 		return subcategoria;
 	}
 
