@@ -27,6 +27,7 @@ public class Topico {
 	protected Topico() {
 	}
 
+
 	public Topico(String titulo, String mensagem, Curso curso, Usuario dono) {
 		this.titulo = titulo;
 		this.mensagem = mensagem;
