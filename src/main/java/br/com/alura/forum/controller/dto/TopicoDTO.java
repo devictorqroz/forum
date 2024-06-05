@@ -1,4 +1,4 @@
-package br.com.alura.forum.dto;
+package br.com.alura.forum.controller.dto;
 
 import br.com.alura.forum.model.Topico;
 

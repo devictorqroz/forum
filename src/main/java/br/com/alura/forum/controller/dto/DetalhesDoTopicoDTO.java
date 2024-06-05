@@ -1,4 +1,4 @@
-package br.com.alura.forum.dto;
+package br.com.alura.forum.controller.dto;
 
 import br.com.alura.forum.model.StatusTopico;
 import br.com.alura.forum.model.Topico;
@@ -14,7 +14,7 @@ public class DetalhesDoTopicoDTO {
     private String titulo;
     private String mensagem;
     private LocalDateTime dataCriacao;
-    private String nomeAutor;
+    private String dono;
     private StatusTopico status;
     private List<RespostaDTO> respostas;
 
@@ -23,7 +23,7 @@ public class DetalhesDoTopicoDTO {
         this.titulo = topico.getTitulo();
         this.mensagem = topico.getMensagem();
         this.dataCriacao = topico.getData();
-        this.nomeAutor = topico.getDono().getNome();
+        this.dono = topico.getDono().getNome();
         this.status = topico.getStatus();
         this.respostas = new ArrayList<>();
         this.respostas.addAll(topico.getRespostas().stream().map(RespostaDTO::new).collect(Collectors.toList()));
@@ -45,8 +45,8 @@ public class DetalhesDoTopicoDTO {
         return dataCriacao;
     }
 
-    public String getNomeAutor() {
-        return nomeAutor;
+    public String getDono() {
+        return dono;
     }
 
     public StatusTopico getStatus() {

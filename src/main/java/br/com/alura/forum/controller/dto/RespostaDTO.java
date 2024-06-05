@@ -1,4 +1,4 @@
-package br.com.alura.forum.dto;
+package br.com.alura.forum.controller.dto;
 
 import br.com.alura.forum.model.Resposta;
 
@@ -9,13 +9,13 @@ public class RespostaDTO {
     private Long id;
     private String mensagem;
     private LocalDateTime dataCriacao;
-    private String nomeAutor;
+    private String dono;
 
     public RespostaDTO(Resposta resposta) {
         this.id = resposta.getId();
         this.mensagem = resposta.getMensagem();
         this.dataCriacao = resposta.getData();
-        this.nomeAutor = resposta.getDono().getNome();
+        this.dono = resposta.getDono().getNome();
     }
 
     public Long getId() {
@@ -30,7 +30,7 @@ public class RespostaDTO {
         return dataCriacao;
     }
 
-    public String getNomeAutor() {
-        return nomeAutor;
+    public String getDono() {
+        return dono;
     }
 }

@@ -27,7 +27,6 @@ public class Topico {
 	protected Topico() {
 	}
 
-
 	public Topico(String titulo, String mensagem, Curso curso, Usuario dono) {
 		this.titulo = titulo;
 		this.mensagem = mensagem;
@@ -75,4 +74,11 @@ public class Topico {
 		return status;
 	}
 
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public void setMensagem(String mensagem) {
+		this.mensagem = mensagem;
+	}
 }
