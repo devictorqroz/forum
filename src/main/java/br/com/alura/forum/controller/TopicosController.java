@@ -1,9 +1,9 @@
 package br.com.alura.forum.controller;
 
-import br.com.alura.forum.controller.form.AtualizacaoTopicoForm;
-import br.com.alura.forum.controller.form.TopicoForm;
 import br.com.alura.forum.controller.dto.DetalhesDoTopicoDTO;
 import br.com.alura.forum.controller.dto.TopicoDTO;
+import br.com.alura.forum.controller.form.AtualizacaoTopicoForm;
+import br.com.alura.forum.controller.form.TopicoForm;
 import br.com.alura.forum.model.Topico;
 import br.com.alura.forum.repository.CursoRepository;
 import br.com.alura.forum.repository.TopicoRepository;
@@ -39,6 +39,7 @@ public class TopicosController {
     }
 
     @PostMapping
+    @Transactional
     public ResponseEntity<TopicoDTO> cadastrar(@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
         Topico topico = form.converter(cursoRepository);
         topicoRepository.save(topico);
@@ -60,5 +61,13 @@ public class TopicosController {
 
         return ResponseEntity.ok(new TopicoDTO(topico));
     }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity<?> remover(@PathVariable Long id) {
+        topicoRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
 
 }
