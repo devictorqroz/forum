@@ -35,7 +35,6 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    // Config Autenticacao - Login - Controle de acesso
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(autenticacaoService)
@@ -43,7 +42,6 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
     }
 
 
-    // Config de Autorizacao - urls - perfil de acesso
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -52,17 +50,18 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
             .antMatchers(HttpMethod.POST, "/auth").permitAll()
             .antMatchers(HttpMethod.GET, "/actuator/**").permitAll()
             .anyRequest().authenticated()
-//            .and().formLogin();
             .and().csrf().disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenServices, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
+            .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenServices, usuarioRepository),
+                UsernamePasswordAuthenticationFilter.class);
     }
 
 
-    // Config de recursos estáticos (js, css, imagens)
     @Override
     public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/**.html", "/v2/api-docs", "/webjars/**",
+                "/configuration/**", "/swagger-resources/**");
     }
 
 
