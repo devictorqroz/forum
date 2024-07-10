@@ -15,7 +15,7 @@ public class Curso {
 	private String subcategoria;
 
 	// construtor default exigido pela JPA
-	protected Curso() {
+	public Curso() {
 	}
 
 	public Curso(String nome, String subcategoria) {
@@ -41,4 +41,11 @@ public class Curso {
 		return subcategoria;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public void setSubcategoria(String subcategoria) {
+		this.subcategoria = subcategoria;
+	}
 }
